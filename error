@@ -1,0 +1,14 @@
+            var number = new HexBigInteger(21000);
+            var anotherNumber = new HexBigInteger("0x5208");
+            var hex = number.HexValue; //0x5208
+            //BigInteger val = anotherNumber; //2100
+            var contractByteCode = "0x606060405260405160208060ae833981016040528080519060200190919050505b806000600050819055505b5060768060386000396000f360606040526000357c010000000000000000000000000000000000000000000000000000000090048063c6888fa1146037576035565b005b604b60048080359060200190919050506061565b6040518082815260200191505060405180910390f35b6000600060005054820290506071565b91905056";
+
+            var abi = @"[{""constant"":false,""inputs"":[{""name"":""a"",""type"":""uint256""}],""name"":""multiply"",""outputs"":[{""name"":""d"",""type"":""uint256""}],""type"":""function""},{""inputs"":[{""name"":""multiplier"",""type"":""uint256""}],""type"":""constructor""}]";
+
+            var addressFrom = "0x12890d2cce102216644c59dae5baed380d84830c";
+
+            var web3 = new Nethereum.Web3.Web3();
+
+            var transactionHash = await web3.Eth.DeployContract.SendRequestAsync(abi, contractByteCode, addressFrom, 7);
+            
